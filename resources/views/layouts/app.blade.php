@@ -11,7 +11,7 @@
     @livewireStyles
 </head>
 <body class="antialiased">
-{{ $slot }}
+{{ $slot ?? '' }}
 @yield('content')
 @livewireScripts
 </body>

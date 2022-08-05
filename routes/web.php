@@ -21,3 +21,13 @@ Route::middleware('guest')->group(function () {
 Route::get('/', function () {
     return "Home";
 })->name('home');
+
+Route::prefix('/admin')
+    ->middleware('auth')
+    ->group(function () {
+        Route::get('/post', [\App\Http\Controllers\PostController::class, 'index'])
+            ->name('admin.post.index');
+        Route::get('/post/{post}', [\App\Http\Controllers\PostController::class, 'edit'])
+            ->name('admin.post.edit');
+    });
+
