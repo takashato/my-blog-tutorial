@@ -13,6 +13,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::middleware('guest')->group(function () {
+    Route::get('/login', \App\Http\Livewire\Pages\Login::class)
+        ->name('login');
 });
+
+Route::get('/', function () {
+    return "Home";
+})->name('home');
